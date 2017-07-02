@@ -121,7 +121,6 @@ set(BOX2D_Rope_HDRS
 set(BOX2D_General_HDRS
 	Box2D.h
 )
-include_directories( ../ )
 
 if(BOX2D_BUILD_SHARED)
 	add_library(Box2D_shared SHARED
@@ -141,6 +140,7 @@ if(BOX2D_BUILD_SHARED)
 		${BOX2D_Rope_SRCS}
 		${BOX2D_Rope_HDRS}
 	)
+        target_include_directories(Box2D_shared PUBLIC ../)
 	set_target_properties(Box2D_shared PROPERTIES
 		OUTPUT_NAME "Box2D"
 		CLEAN_DIRECT_OUTPUT 1
@@ -166,6 +166,7 @@ if(BOX2D_BUILD_STATIC)
 		${BOX2D_Rope_SRCS}
 		${BOX2D_Rope_HDRS}
 	)
+        target_include_directories(Box2D PUBLIC ../)
 	set_target_properties(Box2D PROPERTIES
 		CLEAN_DIRECT_OUTPUT 1
 		VERSION ${BOX2D_VERSION}
